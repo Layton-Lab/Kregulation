@@ -15,25 +15,27 @@ c2 = [0.4940, 0.1840, 0.5560];%purple
 c3 = [0.3010, 0.7450, 0.9330]; %blue
 
 % which plots?
-plt_amt = 1;
-plt_con = 1;
+plt_amt = 0;
+plt_con = 0;
 plt_PhiKin = 1;
 plt_flux = 0;
-plt_effects = 1;
-plt_kidney = 1;
-plt_ALD = 1;
-plt_exp = 1;
+plt_effects = 0;
+plt_kidney = 0;
+plt_ALD = 0;
+plt_exp = 0;
 plt_uK_sum = 0;
 
 % fontsizes
-fonts.title = 15;
-fonts.xlabel = 15;
-fonts.ylabel = 15;
-fonts.legend = 15;
+fonts.title = 20;
+fonts.xlabel = 18;
+fonts.ylabel = 18;
+fonts.legend = 14;
+fonts.xticks = 14;
 
 markersize = 15;
 
-labels = {'K deficient Meal', '35 mmol K ingested orally', 'K deficient Meal + 35 mmol K'};
+%labels = {'K^+ deficient Meal only', '35 mmol K^+ ingested orally only', 'K^+ deficient Meal + 35 mmol K^+'};
+labels = {'Meal only', 'KCl only', 'Meal + KCl'};
 
 %% plot Phi_Kin
 if plt_PhiKin
@@ -50,15 +52,17 @@ if plt_PhiKin
         [PhiKin_vals3(ii), ~] = get_PhiKin(T{3}(ii), 0, params{3}, Kin_opts{3}, MealInfo{3});
     end %for ii
     figure(99)
-    plot(times1, PhiKin_vals1, 'linewidth', 2, 'color', c1)
+    plot(times1/60, PhiKin_vals1, 'linewidth', 2, 'color', c1)
     hold on
-    plot(times2, PhiKin_vals2, 'linewidth', 2, 'color', c2, 'linestyle', '--')
-    plot(times3, PhiKin_vals3, 'linewidth', 2, 'color', c3, 'linestyle', '-.')
-    xlabel('time (mins)', 'fontsize', fonts.xlabel)
-    ylabel('$\Phi_{Kin}$ (mEq/min)', 'interpreter', 'latex', 'fontsize', fonts.ylabel)
-    title('$K^+$ intake ($\Phi_{Kin}$)', 'interpreter', 'latex', 'fontsize', fonts.title)
-    legend(labels, 'fontsize', fonts.legend)
-    xlim([-exp_start, 900])
+    plot(times2/60, PhiKin_vals2, 'linewidth', 2, 'color', c2, 'linestyle', '-.')
+    plot(times3/60, PhiKin_vals3, 'linewidth', 2, 'color', c3, 'linestyle', ':')
+    xlabel('time (hours)', 'fontsize', fonts.xlabel)
+    ylabel('\Phi_{Kin} (mEq/min)', 'fontsize', fonts.ylabel)
+    title('K^+ intake (\Phi_{Kin})', 'fontsize', fonts.title)
+    legend(labels, 'fontsize', fonts.legend, 'Location', 'northeast')
+    xlim([-exp_start/60, 900/60])
+    a = get(gca, 'XTickLabel');
+    set(gca,'XTickLabel',a,'fontsize',fonts.xticks)
     hold off
 end
 

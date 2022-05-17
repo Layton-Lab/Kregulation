@@ -147,4 +147,5 @@ Kin_opts = {Kin1, Kin2, Kin3};
 MealInfo = {MealInfo1, MealInfo2, MealInfo3};
 disp('** plotting results **')
 %plot_Preston_exp(T, X, params, Kin_opts, MealInfo)
-plot_nicePreston(T, X, params, Kin_opts, MealInfo)
+plot_Preston_manu(T, X, params, Kin_opts, MealInfo)
+%plot_nicePreston(T, X, params, Kin_opts, MealInfo)
