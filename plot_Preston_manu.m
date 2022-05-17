@@ -1,4 +1,4 @@
-function plot_Preston_exp(T, X, params, Kin_opts, MealInfo)
+function plot_Preston_manu(T, X, params, Kin_opts, MealInfo)
 %% if want to remove the outlying datapoin in Meal UP experiment, use Meal_UK_scaled_nodatapoint data. Otherwise - use Meal_UK_scaled
 
 close all
@@ -11,20 +11,30 @@ varnames = set_params().varnames;
 
 % color options
 c1= [0.9290, 0.6940, 0.1250]; %yellow
-c2 = [0.4940, 0.1840, 0.5560];%purple
+c2 = [0.4940, 0.1840, 0.5560];%purple 
 c3 = [0.3010, 0.7450, 0.9330]; %blue
 
 % which plots?
-plt_PhiKin = 1;
+plt_PhiKin = 0;
+plt_M_con = 1; % amounts and concentrations
 
 % fontsizes
-fonts.title = 20;
-fonts.xlabel = 18;
-fonts.ylabel = 18;
+fonts.title = 14;
+fonts.xlabel = 13;
+fonts.ylabel = 13;
 fonts.legend = 14;
-fonts.ticks = 12;
-
+fonts.ticks = 10;
 markersize = 15;
+
+% linestyles
+ls1 = '-';
+ls2 = ':';
+ls3 = '-.';
+lw = 2; % linewidth
+
+% x axis limits
+xmin = -exp_start/60;
+xmax = 9; %600/60;
 
 %labels = {'K^+ deficient Meal only', '35 mmol K^+ ingested orally only', 'K^+ deficient Meal + 35 mmol K^+'};
 labels = {'Meal only', 'KCl only', 'Meal + KCl'};
@@ -44,20 +54,191 @@ if plt_PhiKin
         [PhiKin_vals3(ii), ~] = get_PhiKin(T{3}(ii), 0, params{3}, Kin_opts{3}, MealInfo{3});
     end %for ii
     figure(99)
-    plot(times1/60, PhiKin_vals1, 'linewidth', 2, 'color', c1)
+    plot(times1/60, PhiKin_vals1, 'linewidth', 2, 'color', c1, 'linestyle', ls1)
     hold on
-    plot(times2/60, PhiKin_vals2, 'linewidth', 2, 'color', c2, 'linestyle', '-.')
-    plot(times3/60, PhiKin_vals3, 'linewidth', 2, 'color', c3, 'linestyle', ':')
+    plot(times2/60, PhiKin_vals2, 'linewidth', 2, 'color', c2, 'linestyle', ls2)
+    plot(times3/60, PhiKin_vals3, 'linewidth', 2, 'color', c3, 'linestyle', ls3)
     ax = gca;
     ax.FontSize = fonts.ticks;
     xlabel('time (hours)', 'fontsize', fonts.xlabel)
     ylabel('\Phi_{Kin} (mEq/min)', 'fontsize', fonts.ylabel)
     title('K^+ intake (\Phi_{Kin})', 'fontsize', fonts.title)
     legend(labels, 'fontsize', fonts.legend, 'Location', 'northeast')
-    xlim([-exp_start/60, 900/60])
+    xlim([xmin, xmax])
     a = get(gca, 'XTickLabel');
     set(gca,'XTickLabel',a,'fontsize',fonts.ticks)
     hold off
 end
+
+data = load('./Data/PrestonData.mat');
+
+if plt_M_con
+    figure(100)
+    % Phi Kin
+    s = subplot(3,3,1);
+    PhiKin_vals1 = zeros(size(T{1}));
+    for ii = 1:length(T{1})
+        [PhiKin_vals1(ii), ~] = get_PhiKin(T{1}(ii), 0, params{1}, Kin_opts{1}, MealInfo{1});
+    end % for ii
+    PhiKin_vals2 = zeros(size(T{2}));
+    for ii = 1:length(T{2})
+        [PhiKin_vals2(ii), ~] = get_PhiKin(T{2}(ii), 0, params{2}, Kin_opts{2}, MealInfo{2});
+    end %for ii
+    PhiKin_vals3 = zeros(size(T{3}));
+    for ii = 1:length(T{3})
+        [PhiKin_vals3(ii), ~] = get_PhiKin(T{3}(ii), 0, params{3}, Kin_opts{3}, MealInfo{3});
+    end %for ii
+    plot(s, times1/60, PhiKin_vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, PhiKin_vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, PhiKin_vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlim([xmin, xmax])
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq', 'fontsize', fonts.ylabel)
+    title('K^+ intake (\Phi_{Kin})', 'fontsize', fonts.title)
+    hold off
+    
+    % MKgut
+    s = subplot(3,3,2);
+    varnum = 1;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:,varnum);
+    vals3 = X{3}(:,varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq', 'fontsize', fonts.ylabel)
+    title('Gut K^+ Amount (M_{Kgut})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    hold off
+    
+    % MKplasma
+    s = subplot(3,3,4);
+    varnum = 2;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:,varnum);
+    vals3 = X{3}(:,varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq', 'fontsize', fonts.ylabel)
+    title('Plasma K^+ Amount (M_{Kplasma})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([15, 22])
+    hold off
+    
+    % MKinter
+    s = subplot(3,3,5);
+    varnum = 3;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:,varnum);
+    vals3 = X{3}(:,varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq', 'fontsize', fonts.ylabel)
+    title('Interstitial K^+ Amount (M_{Kinter})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([35,45])
+    hold off
+    
+    % MKIC
+    s = subplot(3,3,6);
+    varnum = 4;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:,varnum);
+    vals3 = X{3}(:,varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq', 'fontsize', fonts.ylabel)
+    title('Intracellular K^+ Amount (M_{KIC})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    hold off
+    
+    % Kplasma
+    s = subplot(3,3,7);
+    varnum = 5;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:,varnum);
+    vals3 = X{3}(:,varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    errorbar(data.time_serum/60, data.Meal_serum_scaled, data.Meal_serum_err,'.', 'markersize', markersize,'color',c1)
+    plot(data.time_serum/60, data.Meal_serum_scaled, '.', 'markersize', markersize, 'color', c1)
+    errorbar(data.time_serum/60, data.KCL_serum_scaled, data.KCL_serum_err,'.', 'markersize', markersize,'color',c2)
+    plot(data.time_serum/60, data.KCL_serum_scaled, '.', 'markersize', markersize, 'color', c2)
+    errorbar(data.time_serum/60, data.MealKCL_serum_scaled, data.MealKCL_serum_err,'.', 'markersize', markersize,'color',c3)
+    plot(data.time_serum/60, data.MealKCL_serum_scaled, '.', 'markersize', markersize, 'color', c3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq', 'fontsize', fonts.ylabel)
+    title('Plasma [K^+] (K_{plasma})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([3.2,5.0])
+    hold off
+    
+    % Kinterstitial
+    s = subplot(3,3,8);
+    varnum = 6;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:,varnum);
+    vals3 = X{3}(:,varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq', 'fontsize', fonts.ylabel)
+    title('Interstitial [K^+] (K_{inter})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([3.2,5.0])
+    hold off
+    
+    % KIC
+    s = subplot(3,3,9);
+    varnum = 8;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:,varnum);
+    vals3 = X{3}(:,varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq', 'fontsize', fonts.ylabel)
+    title('Intracellular [K^+] (K_{IC})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([142,145])
+    hold off
+    
+    legend(labels, 'fontsize', fonts.legend, 'Location', 'northeast')
+end
+
 
 end
