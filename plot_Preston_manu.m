@@ -16,7 +16,9 @@ c3 = [0.3010, 0.7450, 0.9330]; %blue
 
 % which plots?
 plt_PhiKin = 0;
-plt_M_con = 1; % amounts and concentrations
+plt_M_con = 0; % amounts and concentrations
+plt_effects = 0; % effects of ALD and insulin
+plt_kidney = 1; % kidney K+ handling
 
 % fontsizes
 fonts.title = 14;
@@ -239,6 +241,178 @@ if plt_M_con
     
     legend(labels, 'fontsize', fonts.legend, 'Location', 'northeast')
 end
+
+if plt_effects
+    figure(101)
+    % rho_insullin
+    s = subplot(2,2,1);
+    varnum = 11;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:, varnum);
+    vals3 = X{3}(:, varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('\rho_{insulin}', 'fontsize', fonts.ylabel)
+    title('[insulin] effect on \Phi_{ECtoIC}', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([0.925, 1.11])
+    hold off
+    
+    % rho_al
+    s = subplot(2,2,2);
+    varnum = 12;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:, varnum);
+    vals3 = X{3}(:, varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('\rho_{al}', 'fontsize', fonts.ylabel)
+    title('[ALD] effect on \Phi_{ECtoIC}', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([0.925, 1.11])
+    hold off
+    
+    % gamma_Kin
+    s = subplot(2,2,3);
+    varnum = 21;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:, varnum);
+    vals3 = X{3}(:, varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('\gamma_{Kin}', 'fontsize', fonts.ylabel)
+    title('GI Feedforward Effect', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([0.925, 7])
+    hold off
+    
+    % gamma_al
+    s = subplot(2,2,4);
+    varnum = 20;
+    vals1 = X{1}(:,varnum);
+    vals2 = X{2}(:, varnum);
+    vals3 = X{3}(:, varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('\gamma_{al}', 'fontsize', fonts.ylabel)
+    title('[ALD] effect on \Phi_{dt-Ksec}', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([0.925, 1.11])
+    hold off
+    
+    legend(labels, 'fontsize', 12, 'Location', 'best')
+end
+
+if plt_kidney
+    figure(102)
+    % phi_filK
+    s = subplot(2,2,1);
+    varnum = 15;
+    vals1 = X{1}(:, varnum);
+    vals2 = X{2}(:, varnum);
+    vals3 = X{3}(:, varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq/min', 'fontsize', fonts.ylabel)
+    title('Filtered K^+ load (\Phi_{filK})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    ylim([0.4, 0.6])
+    hold off
+
+    % phi_dtKsec
+    s = subplot(2,2,2);
+    varnum = 18;
+    vals1 = X{1}(:, varnum);
+    vals2 = X{2}(:, varnum);
+    vals3 = X{3}(:, varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq/min', 'fontsize', fonts.ylabel)
+    title('DT K^+ secretion (\Phi_{dt-Ksec})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    hold off
+    
+    % CD K transport
+    s = subplot(2,2,3);
+    vals1 = X{1}(:, 23) - X{1}(:, 26);
+    vals2 = X{2}(:, 23) - X{2}(:, 26);
+    vals3 = X{3}(:, 23) - X{3}(:, 26);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq/min', 'fontsize', fonts.ylabel)
+    title('CD K^+ transport (\Phi_{cd-Ksec} - \Phi_{cd-Kreab})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    hold off
+    
+    % phi_uK
+    s = subplot(2,2,4);
+    varnum = 28;
+    vals1 = X{1}(:, varnum);
+    vals2 = X{2}(:, varnum);
+    vals3 = X{3}(:, varnum);
+    plot(s, times1/60, vals1, 'linewidth', lw, 'color', c1, 'linestyle', ls1)
+    hold on
+    plot(s, times2/60, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
+    plot(s, times3/60, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
+    errorbar(data.time_UK/60, data.Meal_UK_scaled, data.Meal_UK_err,'.', 'markersize', markersize,'color',c1)
+    plot(data.time_UK/60, data.Meal_UK_scaled, '.', 'markersize', markersize, 'color', c1)  % - with the datapoint
+    errorbar(data.time_UK/60, data.KCL_UK_scaled, data.KCL_UK_err,'.', 'markersize', markersize,'color',c2)
+    plot(data.time_UK/60, data.KCL_UK_scaled, '.', 'markersize', markersize, 'color', c2)
+    errorbar(data.time_UK/60, data.MealKCL_UK_scaled, data.MealKCL_UK_err,'.', 'markersize', markersize,'color',c3)
+    plot(data.time_UK/60, data.MealKCL_UK_scaled, '.', 'markersize', markersize, 'color', c3)
+    ax = gca;
+    ax.FontSize = fonts.ticks;
+    xlabel('time (hrs)', 'fontsize', fonts.xlabel)
+    ylabel('mEq/min', 'fontsize', fonts.ylabel)
+    title('Urinary K^+ excretion (\Phi_{uK})', 'fontsize', fonts.title)
+    xlim([xmin, xmax])
+    hold off
+    
+    legend(labels, 'fontsize', 12, 'Location', 'best')
+end
+
+
+
+
+
+
+
+
 
 
 end
