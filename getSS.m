@@ -1,6 +1,6 @@
 function [SSdata, exitflag, residual] = getSS(IG_file, pars, Kin, varargin)
 % Computes the SS solution of k_reg_mod based on given inputs
-disp('getSS.m')
+%disp('getSS.m')
 num_eq = pars.num_eq;
 
 % default options
@@ -107,7 +107,7 @@ end
 %    'MaxIter', 4e5);
 %options = optimset('Display', 'iter-detailed', 'MaxFunEvals', 1e8, ...
 %    'MaxIter', 4e5);
-disp('getSS.m 2')  
+%disp('getSS.m 2')  
 options = optimoptions('fsolve','Display', 'iter-detailed');
 [SSdata, residual,...
     exitflag, output] = fsolve(@(x) k_reg_mod(0, x, x_p0, pars, ...
@@ -124,7 +124,7 @@ options = optimoptions('fsolve','Display', 'iter-detailed');
                                 'MealInfo', {MealInfo.t_breakfast, MealInfo.t_lunch, MealInfo.t_dinner, ...
                                              MealInfo.K_amount, MealInfo.meal_type}), ...
                         x0, options);
-disp('getSS.m 3')                 
+%disp('getSS.m 3')                 
 %% check for solver convergence
 if exitflag <= 0
     disp('************steady state solver did NOT converge.**********')

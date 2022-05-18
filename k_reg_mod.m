@@ -72,6 +72,7 @@ insulin_A = pars.insulin_A;
 insulin_B = pars.insulin_B;
 MK_crosstalk = false;
 do_FF = true;
+FF = pars.FF;
 do_ALD_NKA = true;
 do_ALD_sec = true;
 fit_CDKreab = false; % if false will use pars cdKreab_A, cdKreab_B values

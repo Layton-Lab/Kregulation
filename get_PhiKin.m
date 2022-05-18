@@ -28,7 +28,7 @@ if strcmp(Kin.Kin_type, 'long_simulation')
             t6 = exp_start + t_dinner + 15;
 
             %%%%% this is to recreate fig 3
-            if strcmp(MealInfo.meal_type, 'Figure 3')
+            if strcmp(MealInfo.meal_type, 'Kload')
                 if ismember(day_cntr, [3,4,5,6])
                     k_amount = 400/3;
                 else
