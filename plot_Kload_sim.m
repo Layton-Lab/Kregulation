@@ -79,7 +79,7 @@ if plt_means
     %bar(s, totalPhiKin, 'FaceColor', 'k')
     hold on
     xlabel('time (days)', 'fontsize', f.xlabel)
-    ylabel('\Phi_{Kin} (mEq/min)', 'fontsize', f.ylabel)
+    ylabel('\Phi_{Kin} (mEq/day)', 'fontsize', f.ylabel)
     ylim([0,450])
     xlim([1,14])
     hold off

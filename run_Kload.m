@@ -219,7 +219,7 @@ if do_plt
     labels{1} = 'baseline model';
     labels{2} = 'MKX-DT-sec';
     labels{3} = 'MKX-CD-sec';
-    labels{4} = 'MKX0-CD-reab';
+    labels{4} = 'MKX-CD-reab';
     plot_Kload_sim(T,X, params, Kin_opts, labels, tf, MealInfo, days)
 end
 
