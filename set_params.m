@@ -22,7 +22,7 @@ pars.Kec_baseline      = 4.3;%4.5; % baseline ECF K concentration (total) mEq/L
 pars.Kec_total    = 4.2;%4.3;%4.5;
 pars.P_ECF             = 0.3;%0.5;%0.8;%0.1; % this parameter will have to be fit I think
 
-pars.Kmuscle_baseline       = 130; %145.0; % baseline muscle concentration mEq/L
+pars.Kmuscle_baseline       = 130; % baseline muscle concentration mEq/L
 %% NKA activity values
 pars.Vmax              = 130;%134; % mmol/min Cheng 2013
 pars.Km                = 1.4;%1.0;%1.3; % mmol/L (Cheng 2013 gives between 0.8 and 1.5)

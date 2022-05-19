@@ -5,8 +5,8 @@ t2 = T{2};
 t3 = T{3};
 t4 = T{4};
 
-disp('days')
-disp(days)
+%disp('days')
+%disp(days)
 
 % color options
 c1= [0.6350 0.0780 0.1840]; % maroon
@@ -16,9 +16,9 @@ c4 = [0.4940 0.1840 0.5560]; % purple
 
 % fontsizes
 f.title = 17;
-f.xlabel = 17;
-f.ylabel = 17;
-f.legend = 17;
+f.xlabel = 14;
+f.ylabel = 14;
+f.legend = 12;
 f.ticks = 16;
 mark_size1 = 7;
 mark_size2 = 20;
@@ -35,6 +35,7 @@ plt_means = 1;
 
 
 if plt_means
+
     figure(11)
     % Phi_Kin
     PhiKin_vals1 = zeros(size(T{1}));
@@ -54,28 +55,34 @@ if plt_means
         [PhiKin_vals4(ii), ~] = get_PhiKin(T{4}(ii), 0, params{4}, Kin_opts{4}, MealInfo{4});
     end %for ii
     s = subplot(3,1,1);
-    sum_vals = zeros(days,4);
-    for i = 1:days
-        start_id = find(t1 == (i-1)*1440+1);
-        end_id = find(t1 == i*1440);
-        sum_vals(i,1) = sum(PhiKin_vals1(start_id:end_id));
-        start_id = find(t2 == (i-1)*1440+1);
-        end_id = find(t2 == i*1440);
-        sum_vals(i,2) = sum(PhiKin_vals2(start_id:end_id));
-        start_id = find(t3 == (i-1)*1440+1);
-        end_id = find(t3 == i*1440);
-        sum_vals(i,3) = sum(PhiKin_vals3(start_id:end_id));
-        start_id = find(t4 == (i-1)*1440+1);
-        end_id = find(t4 == i*1440);
-        sum_vals(i,4) = sum(PhiKin_vals4(start_id:end_id));
-    end
-    plot(s, sum_vals, 'linewidth', lw)
+%     sum_vals = zeros(days,4);
+%     for i = 1:days
+%         start_id = find(t1 == (i-1)*1440+1);
+%         end_id = find(t1 == i*1440);
+%         sum_vals(i,1) = sum(PhiKin_vals1(start_id:end_id));
+%         start_id = find(t2 == (i-1)*1440+1);
+%         end_id = find(t2 == i*1440);
+%         sum_vals(i,2) = sum(PhiKin_vals2(start_id:end_id));
+%         start_id = find(t3 == (i-1)*1440+1);
+%         end_id = find(t3 == i*1440);
+%         sum_vals(i,3) = sum(PhiKin_vals3(start_id:end_id));
+%         start_id = find(t4 == (i-1)*1440+1);
+%         end_id = find(t4 == i*1440);
+%         sum_vals(i,4) = sum(PhiKin_vals4(start_id:end_id));
+%     end
+    %plot(s, sum_vals, 'linewidth', lw)
+    %plot(s, t1/(60*24), PhiKin_vals1, 'linewidth', lw, 'color', 'k')
+    totalPhiKin = MealInfo{1}.K_amount*3*ones(14,1);
+    totalPhiKin(3:6) = 400;
+    %disp(totalPhiKin)
+    plot(s, totalPhiKin, 'linewidth', lw, 'color', 'k')
+    %bar(s, totalPhiKin, 'FaceColor', 'k')
     hold on
     xlabel('time (days)', 'fontsize', f.xlabel)
-    ylabel('Total \Phi_{Kin} (mEq/day)', 'fontsize', f.ylabel)
+    ylabel('\Phi_{Kin} (mEq/min)', 'fontsize', f.ylabel)
+    ylim([0,450])
     xlim([1,14])
     hold off
-
     % plasma [K]
     s = subplot(3,1,2);
     varnum = 5;
@@ -125,7 +132,7 @@ if plt_means
     ylabel('plasma [K^+] (mEq/L)', 'fontsize', f.ylabel)
     xlim([1,14])
     hold off
-
+    
 
     % intracellular [K]
     s = subplot(3,1,3);
@@ -159,18 +166,24 @@ if plt_means
     end
     plot(s, mean_vals(:,1), 'Linewidth', lw, 'color', c1, 'marker', m1);
     hold on
-    plot(s, max_vals(:,1), 'color', c1, 'marker', m1, 'linewidth', lw, 'linestyle', ':', 'markersize', mark_size1);
     plot(s, mean_vals(:,2), 'Linewidth', lw, 'color', c2, 'marker', m2, 'markersize', mark_size1);
-    plot(s, max_vals(:,2), 'color', c2, 'marker', m2, 'linestyle', ':', 'linewidth', lw, 'markersize', mark_size1);
     plot(s, mean_vals(:,3), 'Linewidth', lw, 'color', c3, 'marker', m3);
-    plot(s, max_vals(:,3), 'color', c3, 'marker', m3, 'linestyle', ':', 'linewidth', lw, 'markersize', mark_size1);
     plot(s, mean_vals(:,4), 'Linewidth', lw, 'color', c4, 'marker', m4);
+    plot(s, max_vals(:,1), 'color', c1, 'marker', m1, 'linewidth', lw, 'linestyle', ':', 'markersize', mark_size1);
+    plot(s, max_vals(:,2), 'color', c2, 'marker', m2, 'linestyle', ':', 'linewidth', lw, 'markersize', mark_size1);
+    plot(s, max_vals(:,3), 'color', c3, 'marker', m3, 'linestyle', ':', 'linewidth', lw, 'markersize', mark_size1);
     plot(s, max_vals(:,4),  'color', c4, 'marker', m4, 'linestyle', ':', 'linewidth', lw, 'markersize', mark_size1);
+    %yline(120, 'Linewidth', 1.5, 'color', lightGrey2, 'linestyle', '-');
+    yline(140, 'Linewidth', 1.5, 'color', lightGrey2, 'linestyle', '-');
     xlabel('time (days)', 'fontsize', f.xlabel)
     ylabel('intracellular [K^+] (mEq/L)', 'fontsize', f.ylabel)
     xlim([1,14])
-    legend(labels{1}, labels{2}, labels{3}, labels{4}, 'fontsize', f.legend)
+    ylim([125, 155])
+    
     hold off
+   legend(labels{1}, labels{2}, labels{3}, labels{4}, 'fontsize', f.legend)
+    
+    
 end % plt_means
 
 % if plt_bar

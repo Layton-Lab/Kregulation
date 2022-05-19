@@ -12,7 +12,7 @@ Kin1.KCL = 1;
 MealInfo1.t_breakfast = 7; % enter the hour at which to have breakfast in 24 hour format: for ex: 0 = midnight, 8 = 8am, 15 = 3pm
 MealInfo1.t_lunch = 13;    % break between mealtimes has to be more than 6 hours for the C_insulin function to work properly
 MealInfo1.t_dinner = 19;
-MealInfo1.K_amount = 120/3;  % how much K is ingested PER MEAL 3 times a day
+MealInfo1.K_amount = 100/3; %120/3;  % how much K is ingested PER MEAL 3 times a day
 MealInfo1.meal_type = 'Kload';
 
 
@@ -57,7 +57,7 @@ Kin2.KCL = 1;
 MealInfo2.t_breakfast = 7; % enter the hour at which to have breakfast in 24 hour format: for ex: 0 = midnight, 8 = 8am, 15 = 3pm
 MealInfo2.t_lunch = 13;    % break between mealtimes has to be more than 6 hours for the C_insulin function to work properly
 MealInfo2.t_dinner = 19;
-MealInfo2.K_amount = 120/3;
+MealInfo2.K_amount = 100/3; %120/3;
 MealInfo2.meal_type = 'Kload';
 
 
@@ -106,7 +106,7 @@ Kin3.KCL = 1;
 MealInfo3.t_breakfast = 7; % enter the hour at which to have breakfast in 24 hour format: for ex: 0 = midnight, 8 = 8am, 15 = 3pm
 MealInfo3.t_lunch = 13;    % break between mealtimes has to be more than 6 hours for the C_insulin function to work properly
 MealInfo3.t_dinner = 19;
-MealInfo3.K_amount = 120/3;
+MealInfo3.K_amount = 100/3; %120/3;
 MealInfo3.meal_type = 'Kload';
 
 
@@ -154,7 +154,7 @@ Kin4.KCL = 1;
 MealInfo4.t_breakfast = 7; % enter the hour at which to have breakfast in 24 hour format: for ex: 0 = midnight, 8 = 8am, 15 = 3pm
 MealInfo4.t_lunch = 13;    % break between mealtimes has to be more than 6 hours for the C_insulin function to work properly
 MealInfo4.t_dinner = 19;
-MealInfo4.K_amount = 120/3;
+MealInfo4.K_amount = 100/3; %120/3;
 MealInfo4.meal_type = 'Kload';
 
 
@@ -217,9 +217,9 @@ if do_plt
     X{3} = X3;
     X{4} = X4;
     labels{1} = 'baseline model';
-    labels{2} = 'DT K^+ secretion MKX';
-    labels{3} = 'CD K^+ secretion MKX';
-    labels{4} = 'CD K^+ reabsorption MKX';
+    labels{2} = 'MKX-DT-sec';
+    labels{3} = 'MKX-CD-sec';
+    labels{4} = 'MKX0-CD-reab';
     plot_Kload_sim(T,X, params, Kin_opts, labels, tf, MealInfo, days)
 end
 
