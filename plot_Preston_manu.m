@@ -16,8 +16,8 @@ c3 = [0.3010, 0.7450, 0.9330]; %blue
 
 % which plots?
 plt_PhiKin = 0;
-plt_M_con = 0; % amounts and concentrations
-plt_effects = 0; % effects of ALD and insulin
+plt_M_con = 1 ;% amounts and concentrations
+plt_effects = 1; % effects of ALD and insulin
 plt_kidney = 1; % kidney K+ handling
 
 % fontsizes
@@ -236,7 +236,7 @@ if plt_M_con
     ylabel('mEq', 'fontsize', fonts.ylabel)
     title('Intracellular [K^+] (K_{IC})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([142,145])
+    ylim([127,132])
     hold off
     
     legend(labels, 'fontsize', fonts.legend, 'Location', 'northeast')
