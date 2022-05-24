@@ -32,6 +32,7 @@ m4 = 's';
 % which plots?
 %plt_bar = 0;
 plt_means = 1;
+get_info = 1;
 
 
 if plt_means
@@ -184,7 +185,7 @@ if plt_means
     
     hold off
     
-        % urinary K
+    % urinary K
     s = subplot(4,1,4);
     varnum = 28;
     vals1 = X{1}(:,varnum);
@@ -233,6 +234,98 @@ if plt_means
     
     
 end % plt_means
+
+if get_info
+    % total K in the body
+    varMKgut = 1;
+    varMKplasma = 2;
+    varMKinter = 3;
+    varMKmuscle = 4;
+    
+    baseMKgut = X{1}(:,varMKgut);
+    baseMKplasma = X{1}(:,varMKplasma);
+    baseMKinter = X{1}(:, varMKinter);
+    baseMKmuscle = X{1}(:, varMKmuscle);
+    
+    vals1 = baseMKgut;
+    vals2 = baseMKplasma;
+    vals3 = baseMKinter;
+    vals4 = baseMKmuscle; 
+    
+    basemean_vals = zeros(days,4);
+    basemax_vals = zeros(days,4);
+    basemin_vals = zeros(days,4);
+    for i = 1:days
+        start_id = find(t1 == (i-1)*1440+1);
+        end_id = find(t1 == i*1440);
+        basemean_vals(i,1) = mean(vals1(start_id:end_id));
+        basemax_vals(i,1) = max(vals1(start_id:end_id));
+        basemin_vals(i,1) = min(vals1(start_id:end_id));
+        basemean_vals(i,2) = mean(vals2(start_id:end_id));
+        basemax_vals(i,2) = max(vals2(start_id:end_id));
+        basemin_vals(i,2) = min(vals2(start_id:end_id));
+        basemean_vals(i,3) = mean(vals3(start_id:end_id));
+        basemax_vals(i,3) = max(vals3(start_id:end_id));
+        basemin_vals(i,3) = min(vals3(start_id:end_id));
+        basemean_vals(i,4) = mean(vals4(start_id:end_id));
+        basemax_vals(i,4) = max(vals4(start_id:end_id));
+        basemin_vals(i,4) = min(vals4(start_id:end_id));
+    end
+    
+    p = set_params();
+    disp('**baseline model results**')
+    disp('K_plasma')
+    disp(basemean_vals(:,2)/p.V_plasma)
+    
+    disp('K_intracellular')
+    disp(basemean_vals(:,4)/p.V_muscle)
+    
+    disp('total')
+    disp(sum(basemean_vals, 2))
+    
+    disp('**MKX dt K sec model results**')
+    dtKMKgut = X{2}(:,varMKgut);
+    dtKMKplasma = X{2}(:,varMKplasma);
+    dtKMKinter = X{2}(:, varMKinter);
+    dtKMKmuscle = X{2}(:, varMKmuscle);
+    
+    vals1 = dtKMKgut;
+    vals2 = dtKMKplasma;
+    vals3 = dtKMKinter;
+    vals4 = dtKMKmuscle; 
+    
+    dtKmean_vals = zeros(days,4);
+    dtKmax_vals = zeros(days,4);
+    dtKmin_vals = zeros(days,4);
+    for i = 1:days
+        start_id = find(t1 == (i-1)*1440+1);
+        end_id = find(t1 == i*1440);
+        dtKmean_vals(i,1) = mean(vals1(start_id:end_id));
+        dtKmax_vals(i,1) = max(vals1(start_id:end_id));
+        dtKmin_vals(i,1) = min(vals1(start_id:end_id));
+        dtKmean_vals(i,2) = mean(vals2(start_id:end_id));
+        dtKmax_vals(i,2) = max(vals2(start_id:end_id));
+        dtKmin_vals(i,2) = min(vals2(start_id:end_id));
+        dtKmean_vals(i,3) = mean(vals3(start_id:end_id));
+        dtKmax_vals(i,3) = max(vals3(start_id:end_id));
+        dtKmin_vals(i,3) = min(vals3(start_id:end_id));
+        dtKmean_vals(i,4) = mean(vals4(start_id:end_id));
+        dtKmax_vals(i,4) = max(vals4(start_id:end_id));
+        dtKmin_vals(i,4) = min(vals4(start_id:end_id));
+    end
+    
+
+    disp('K_plasma')
+    disp(dtKmean_vals(:,2)/p.V_plasma)
+    
+    disp('K_intracellular')
+    disp(dtKmean_vals(:,4)/p.V_muscle)
+    
+    disp('total')
+    disp(sum(dtKmean_vals, 2))
+    
+    
+end % get_info
 
 % if plt_bar
 %     figure(10)
