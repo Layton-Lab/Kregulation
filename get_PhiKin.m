@@ -34,12 +34,12 @@ if strcmp(Kin.Kin_type, 'long_simulation')
                 else
                     k_amount = MealInfo.K_amount;
                 end
-            elseif strcmp(MealInfo.meal_type, 'Figure 4')
+            elseif strcmp(MealInfo.meal_type, 'Kdeplete')
                 %%%% this is to recreate fig 4
-                if day_cntr < 11
-                    k_amount = 35/3;
+                if day_cntr < 35 && day_cntr > 5
+                    k_amount = 25/3; %50/3;
                 else
-                    k_amount = 120/3;
+                    k_amount = 100/3;
                 end
             else
                 k_amount = MealInfo.K_amount;
