@@ -76,7 +76,7 @@ if plt_all3
     ylabel('mEq/L', 'fontsize', f.ylabel)
     title('Plasma [K^+] (K_{plasma})', 'fontsize', f.title)
     xlim([xmin, xmax])
-    ylim([2,4.7])
+    ylim([2.4,4.7])
     hold off
     
     % K_IC
@@ -94,7 +94,7 @@ if plt_all3
     xlabel('time (days)', 'fontsize', f.xlabel)
     ylabel('mEq/L', 'fontsize', f.ylabel)
     title('Intracellular [K^+] (K_{IC})', 'fontsize', f.title)
-    ylim([80,140])
+    ylim([85,140])
     xlim([xmin, xmax])
     hold off
     
@@ -130,7 +130,7 @@ if plt_all3
     ylabel('mEq/min', 'fontsize', f.ylabel)
     title('CD K^+ transport (\Phi_{cd-Ksec} - \Phi_{cd-Kreab})', 'fontsize', f.title)
     xlim([xmin, xmax])
-    ylim([-0.3,0])
+    ylim([-0.27,0])
     hold off
     
     % Phi_uK
