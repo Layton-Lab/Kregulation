@@ -1,4 +1,4 @@
-# KregW22
+# Kregulation
 
 Code files for K+ regulation model.
 
@@ -10,7 +10,7 @@ Code files for K+ regulation model.
 
 **fit_insulin.m** fit insulin_A and insulin_B parameters to the Meal only data, calls **fit_Meal_Preston2015**
 
-**fir_params** fits FF, insulin_A, insulin_B, cdKreab_A, cdKreab_B to Meal, KCL, Meal and KCL data by calling **fit_KCLandMeal_Preston2015**
+**fit_params** fits FF, insulin_A, insulin_B, cdKreab_A, cdKreab_B to Meal, KCL, Meal and KCL data by calling **fit_KCLandMeal_Preston2015**
 
 **run_getSS.m** calls **getSS** which computes the steady state of the given system
 
@@ -29,9 +29,9 @@ Code files for K+ regulation model.
 
 **run_simulation** runs 2 simulations based on given specifications, plots relevant results using **plot_simulation**
 
-**run_fig3_sim** runs 2 simulations (one - without MK Xtalk, one with DT K sec Xtalk); 2 days at 120 mEq/day of K+, 4 days at 400 mEq/day, 4 days at 120 mEq/day; plots relevant results using **plot_fig3_sim**
+**run_Kload** run K loading simulations, plot relevant results using **plot_Kload_sim**
 
-**run_fig4_sim** runs 3 simulations comparing different crosstalks; 10 days depletion at 35 mEq/day of K+, then 10 days at normal 120 mEq/day; plots relevant results using **plot_fig4_sim**
+**run_Kdeplete** runs K depletion simulations, plot relevant results using **plot_Kdeplete**
 
 **set_params** sets the model parameters
 
