@@ -1,6 +1,6 @@
-# Kregulation
+# K Regulation
 
-Code files for K+ regulation model.
+Code files for K+ homeostasis regulation model.
 
 ## Key files
 
