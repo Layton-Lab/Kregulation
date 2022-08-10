@@ -18,6 +18,7 @@ f.xlabel = 12;
 f.ylabel = 12;
 f.legend = 14;
 f.ticks = 16;
+f.lab = 12;
 mark_size1 = 7;
 mark_size2 = 20;
 lw = 1.5; % linewidth
@@ -31,12 +32,15 @@ ls1 = '-';
 ls2 = ':';
 ls3 = '--';
 
+labx = 0.25;
+laby = 0.95;
+
 % which plots?
 plt_means = 0;
 plt_all = 0;
 plt_all2 = 0;
 plt_all3 = 1;
-get_info = 1;
+get_info = 0;
 
 if plt_means
   disp('TO DO')  
@@ -59,6 +63,7 @@ if plt_all3
     ylabel('mEq/min', 'fontsize', f.ylabel)
     xlim([xmin, xmax])
     title('K^+ intake (\Phi_{Kin})', 'fontsize', f.title)
+    text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(a)', 'fontsize', f.lab)
     hold off
     
     % K_plasma
@@ -77,6 +82,7 @@ if plt_all3
     title('Plasma [K^+] (K_{plasma})', 'fontsize', f.title)
     xlim([xmin, xmax])
     ylim([2.4,4.7])
+    text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(c)', 'fontsize', f.lab)
     hold off
     
     % K_IC
@@ -96,6 +102,7 @@ if plt_all3
     title('Intracellular [K^+] (K_{IC})', 'fontsize', f.title)
     ylim([85,140])
     xlim([xmin, xmax])
+    text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(e)', 'fontsize', f.lab)
     hold off
     
     % Phi_dtsec
@@ -112,7 +119,8 @@ if plt_all3
     ylabel('mEq/min', 'fontsize', f.ylabel)
     title('DT K^+ secretion (\Phi_{dt-Ksec})', 'fontsize', f.title)
     xlim([xmin, xmax])
-    ylim([-0.05, 0.3])
+    ylim([-0.05, 0.325])
+    text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(b)', 'fontsize', f.lab)
     hold off
     
     % Phi_cd transport
@@ -131,6 +139,7 @@ if plt_all3
     title('CD K^+ transport (\Phi_{cd-Ksec} - \Phi_{cd-Kreab})', 'fontsize', f.title)
     xlim([xmin, xmax])
     ylim([-0.27,0])
+    text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(d)', 'fontsize', f.lab)
     hold off
     
     % Phi_uK
@@ -147,6 +156,8 @@ if plt_all3
     ylabel('mEq/min', 'fontsize', f.ylabel)
     title('Urinary K^+ excretion (\Phi_{uK})', 'fontsize', f.title)
     xlim([xmin, xmax])
+    ylim([0,0.18])
+    text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(f)', 'fontsize', f.lab)
     hold off
     
     legend(labels{1}, labels{2}, labels{3}, 'fontsize', f.legend)
