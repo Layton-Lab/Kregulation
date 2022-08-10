@@ -1,5 +1,5 @@
 clear all; close all; 
-%% run Meal only simulation
+% run Meal only simulation
 pars = set_params();
 
 Kin1.Kin_type = 'gut_Kin3';
@@ -48,7 +48,7 @@ MealInfo1.meal_type = 'other';
 
 disp('Meal simulation finished')
 
-%% run KCL only simulation
+% run KCL only simulation
 Kin2.Kin_type = 'gut_Kin3'; %'step_Kin2';
 Kin2.Meal = 0;
 Kin2.KCL = 1;
@@ -94,7 +94,7 @@ MealInfo2.meal_type = 'other';
 
 disp('KCL simulation finished')
 
-%% run Meal + KCL experiment
+% run Meal + KCL experiment
 Kin3.Kin_type = 'gut_Kin3'; %'step_Kin2';
 Kin3.Meal = 1;
 Kin3.KCL = 1;

@@ -7,6 +7,7 @@ times1 = (T{1} - exp_start)/1;
 times2 = (T{2} - exp_start)/1;
 times3 = (T{3} - exp_start)/1;
 
+
 varnames = set_params().varnames;
 
 % color options
@@ -35,7 +36,7 @@ ls3 = '-.';
 lw = 2; % linewidth
 
 % x axis limits
-xmin = -exp_start/60;
+xmin = -(exp_start - params{1}.tchange)/60;
 xmax = 9; %600/60;
 
 %labels = {'K^+ deficient Meal only', '35 mmol K^+ ingested orally only', 'K^+ deficient Meal + 35 mmol K^+'};
