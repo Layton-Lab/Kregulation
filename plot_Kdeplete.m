@@ -77,11 +77,12 @@ if plt_all3
     plot(s, t2, vals2, 'linewidth', lw, 'color', c2, 'linestyle', ls2)
     plot(s, t3, vals3, 'linewidth', lw, 'color', c3, 'linestyle', ls3)
     yline(3.5, 'linewidth', 1.5, 'color', lightGrey2, 'linestyle', '-');
+    yline(5.0, 'linewidth', 1.5, 'color', lightGrey2, 'linestyle', '-');
     xlabel('time (days)', 'fontsize', f.xlabel)
     ylabel('mEq/L', 'fontsize', f.ylabel)
     title('Plasma [K^+] (K_{plasma})', 'fontsize', f.title)
     xlim([xmin, xmax])
-    ylim([2.4,4.7])
+    ylim([2.3,5.1])
     text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(c)', 'fontsize', f.lab)
     hold off
     
@@ -100,7 +101,7 @@ if plt_all3
     xlabel('time (days)', 'fontsize', f.xlabel)
     ylabel('mEq/L', 'fontsize', f.ylabel)
     title('Intracellular [K^+] (K_{IC})', 'fontsize', f.title)
-    ylim([85,140])
+    ylim([85,150])
     xlim([xmin, xmax])
     text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(e)', 'fontsize', f.lab)
     hold off
@@ -156,7 +157,7 @@ if plt_all3
     ylabel('mEq/min', 'fontsize', f.ylabel)
     title('Urinary K^+ excretion (\Phi_{uK})', 'fontsize', f.title)
     xlim([xmin, xmax])
-    ylim([0,0.18])
+    ylim([0,0.2])
     text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(f)', 'fontsize', f.lab)
     hold off
     

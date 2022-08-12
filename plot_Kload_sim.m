@@ -83,6 +83,7 @@ if plt_all3
     ylabel('mEq/L', 'fontsize', f.ylabel)
     title('Plasma [K^+] (K_{plasma})', 'fontsize', f.title)
     xlim([xmin, xmax])
+    ylim([3.2,6.0])
     text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(c)', 'fontsize', f.lab)
     hold off
     
@@ -102,7 +103,7 @@ if plt_all3
     ylabel('mEq/L', 'fontsize', f.ylabel)
     title('Intracellular [K^+] (K_{IC})', 'fontsize', f.title)
     xlim([xmin, xmax])
-    ylim([120, 155])
+    ylim([115, 155])
     text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(e)', 'fontsize', f.lab)
     hold off
     

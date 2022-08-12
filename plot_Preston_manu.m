@@ -124,7 +124,7 @@ if plt_M_con
     ylabel('mEq', 'fontsize', fonts.ylabel)
     title('Gut K^+ Amount (M_{Kgut})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([0,30])
+    ylim([-1,30])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(b)', 'fontsize', fonts.lab)
     hold off
     
@@ -144,7 +144,7 @@ if plt_M_con
     ylabel('mEq', 'fontsize', fonts.ylabel)
     title('Plasma K^+ Amount (M_{Kplasma})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([15, 22])
+    ylim([10, 25])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(c)', 'fontsize', fonts.lab)
     hold off
     
@@ -164,7 +164,7 @@ if plt_M_con
     ylabel('mEq', 'fontsize', fonts.ylabel)
     title('Interstitial K^+ Amount (M_{Kinter})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([35,45])
+    ylim([30,50])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(d)', 'fontsize', fonts.lab)
     hold off
     
@@ -183,7 +183,7 @@ if plt_M_con
     xlabel('time (hrs)', 'fontsize', fonts.xlabel)
     ylabel('mEq', 'fontsize', fonts.ylabel)
     title('Intracellular K^+ Amount (M_{KIC})', 'fontsize', fonts.title)
-    ylim([3060, 3110])
+    ylim([3000, 3150])
     xlim([xmin, xmax])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(e)', 'fontsize', fonts.lab)
     hold off
@@ -210,7 +210,7 @@ if plt_M_con
     ylabel('mEq', 'fontsize', fonts.ylabel)
     title('Plasma [K^+] (K_{plasma})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([3.2,5.0])
+    ylim([3.0,5.0])
     text(xmin + labx,gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(f)', 'fontsize', fonts.lab)
     hold off
     
@@ -230,7 +230,7 @@ if plt_M_con
     ylabel('mEq', 'fontsize', fonts.ylabel)
     title('Interstitial [K^+] (K_{inter})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([3.2,5.0])
+    ylim([3.0,5.0])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(g)', 'fontsize', fonts.lab)
     hold off
     
@@ -250,7 +250,7 @@ if plt_M_con
     ylabel('mEq', 'fontsize', fonts.ylabel)
     title('Intracellular [K^+] (K_{IC})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([127,132])
+    ylim([120,140])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(h)', 'fontsize', fonts.lab)
     hold off
     
@@ -275,7 +275,7 @@ if plt_effects
     ylabel('\rho_{insulin}', 'fontsize', fonts.ylabel)
     title('[insulin] effect on \Phi_{ECtoIC}', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([0.925, 1.11])
+    ylim([0.92, 1.15])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(a)', 'fontsize', fonts.lab)
     hold off
     
@@ -295,7 +295,7 @@ if plt_effects
     ylabel('\rho_{al}', 'fontsize', fonts.ylabel)
     title('[ALD] effect on \Phi_{ECtoIC}', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([0.925, 1.11])
+    ylim([0.92, 1.15])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(b)', 'fontsize', fonts.lab)
     hold off
     
@@ -315,7 +315,7 @@ if plt_effects
     ylabel('\gamma_{Kin}', 'fontsize', fonts.ylabel)
     title('GI Feedforward Effect', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([0.925, 7])
+    ylim([0.92, 7])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(c)', 'fontsize', fonts.lab)
     hold off
     
@@ -335,7 +335,7 @@ if plt_effects
     ylabel('\gamma_{al}', 'fontsize', fonts.ylabel)
     title('[ALD] effect on \Phi_{dt-Ksec}', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([0.925, 1.11])
+    ylim([0.92, 1.15])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(d)', 'fontsize', fonts.lab)
     hold off
     
@@ -398,7 +398,7 @@ if plt_kidney
     ylabel('mEq/min', 'fontsize', fonts.ylabel)
     title('CD K^+ transport (\Phi_{cd-Ksec} - \Phi_{cd-Kreab})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
-    ylim([-0.16, -0.02])
+    ylim([-0.19, -0.02])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(c)', 'fontsize', fonts.lab)
     hold off
     
@@ -424,6 +424,7 @@ if plt_kidney
     ylabel('mEq/min', 'fontsize', fonts.ylabel)
     title('Urinary K^+ excretion (\Phi_{uK})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
+    ylim([0,0.2])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(d)', 'fontsize', fonts.lab)
     hold off
     
