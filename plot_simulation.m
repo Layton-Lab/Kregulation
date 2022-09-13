@@ -22,8 +22,8 @@ plt_effects = 0;
 plt_kidney = 0;
 plt_ALD = 0;
 plt_MEAL_exp = 0;
-plt_KCL_exp = 0;
-plt_MealKCL_exp = 1;
+plt_KCL_exp = 1;
+plt_MealKCL_exp = 0;
 
 % fontsizes
 fonts.title = 15;

@@ -19,6 +19,7 @@ function [base_vals, dtK_vals, cdKreab_vals] = get_info(T, X, loadORdeplete)
     varcdKsec   = 23;
     varuK = 28;
     
+    % baseline model results
     baseMKgut = X{1}(:,varMKgut);
     baseMKplasma = X{1}(:,varMKplasma);
     baseMKinter = X{1}(:, varMKinter);
@@ -91,7 +92,7 @@ function [base_vals, dtK_vals, cdKreab_vals] = get_info(T, X, loadORdeplete)
 
     dtK_vals = {dtKmin_vals, dtKmean_vals, dtKmax_vals};
     
-    % CD reabsorption
+    % MKX CD reabsorption reasults
     cdKreabMKgut = X{ind_cdK}(:,varMKgut);
     cdKreabMKplasma = X{ind_cdK}(:,varMKplasma);
     cdKreabMKinter = X{ind_cdK}(:, varMKinter);

@@ -41,8 +41,11 @@ if strcmp(Kin.Kin_type, 'long_simulation')
                 else
                     k_amount = 100/3;
                 end
-            else
+            elseif strcmp(MealInfo.meal_type, 'normal')
                 k_amount = MealInfo.K_amount;
+            else
+                fprintf('MealInfo.meal_type: %s \n', MealInfo.meal_type)
+                error('meal_type not done in get_PhiKin')
             end
 
 

@@ -81,7 +81,7 @@ MealInfo.t_breakfast = 7; % default breakfast is at 7 am
 MealInfo.t_lunch = 13; % default lunch is at 1 pm
 MealInfo.t_dinner = 19; % default dinner is at 7 pm
 MealInfo.K_amount = 35; % default K ingestions is 35mEq per meal
-MealInfo.meal_type = 'other';
+MealInfo.meal_type = 'normal';
 for i = 1:2:length(varargin)
     if strcmp(varargin{i}, 'SS')
         SS = varargin{i+1};
@@ -114,7 +114,6 @@ for i = 1:2:length(varargin)
         temp = varargin{i+1};
         fit_CDKreab = temp(1);
         cdKreab_A = temp(2);
-        cdKreab_B = temp(3);
     elseif strcmp(varargin{i}, 'fit_P_ecf')
         temp = varargin{i+1};
         fit_P_ecf = temp(1);
@@ -130,6 +129,7 @@ for i = 1:2:length(varargin)
     else
         disp('WRONG VARARGIN INPUT')
         fprintf('What is this varargin input? %s \n', varargin{i})
+        error('wrong varargin input')
     end % if
 end %for
 
@@ -258,11 +258,13 @@ if fit_CDKreab   % parameters A and B are divided by 1000 and 100 respectively
                  % because otherwise, when fitting the parameters, the
                  % steps would be too small. 
     %f(26) = Phi_cdKreab - ((cdKreab_A*Phi_dtK)/(cdKreab_B + Phi_dtK));
-    temp = (1/(1+exp((Phi_dtK-cdKreab_B/100)*cdKreab_A/1000)));
+    %temp = (1/(1+exp((Phi_dtK-cdKreab_B/100)*cdKreab_A/1000)));
+    temp = cdKreab_A;
     f(26) = Phi_cdKreab - Phi_dtK*temp*eta_cdKreab;
 else
     %f(26) = Phi_cdKreab - ((pars.cdKreab_A*Phi_dtK)/(pars.cdKreab_B + Phi_dtK));
-    temp = (1/(1+exp((Phi_dtK-pars.cdKreab_B/100)*pars.cdKreab_A/1000)));
+    %temp = (1/(1+exp((Phi_dtK-pars.cdKreab_B/100)*pars.cdKreab_A/1000)));
+    temp = pars.cdKreab_A;
     f(26) = Phi_cdKreab - (Phi_dtK*temp*eta_cdKreab);
 end
 

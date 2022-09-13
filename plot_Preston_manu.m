@@ -273,7 +273,7 @@ if plt_effects
     ax.FontSize = fonts.ticks;
     xlabel('time (hrs)', 'fontsize', fonts.xlabel)
     ylabel('\rho_{insulin}', 'fontsize', fonts.ylabel)
-    title('[insulin] effect on \Phi_{ECtoIC}', 'fontsize', fonts.title)
+    title('[insulin] effect on \Phi_{ECtoIC} (\rho_{insulin})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
     ylim([0.92, 1.15])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(a)', 'fontsize', fonts.lab)
@@ -293,7 +293,7 @@ if plt_effects
     ax.FontSize = fonts.ticks;
     xlabel('time (hrs)', 'fontsize', fonts.xlabel)
     ylabel('\rho_{al}', 'fontsize', fonts.ylabel)
-    title('[ALD] effect on \Phi_{ECtoIC}', 'fontsize', fonts.title)
+    title('[ALD] effect on \Phi_{ECtoIC} (\rho_{al})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
     ylim([0.92, 1.15])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(b)', 'fontsize', fonts.lab)
@@ -313,7 +313,7 @@ if plt_effects
     ax.FontSize = fonts.ticks;
     xlabel('time (hrs)', 'fontsize', fonts.xlabel)
     ylabel('\gamma_{Kin}', 'fontsize', fonts.ylabel)
-    title('GI Feedforward Effect', 'fontsize', fonts.title)
+    title('GI Feedforward Effect (\gamma_{Kin})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
     ylim([0.92, 7])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(c)', 'fontsize', fonts.lab)
@@ -333,7 +333,7 @@ if plt_effects
     ax.FontSize = fonts.ticks;
     xlabel('time (hrs)', 'fontsize', fonts.xlabel)
     ylabel('\gamma_{al}', 'fontsize', fonts.ylabel)
-    title('[ALD] effect on \Phi_{dt-Ksec}', 'fontsize', fonts.title)
+    title('[ALD] effect on \Phi_{dt-Ksec} (\gamma_{al})', 'fontsize', fonts.title)
     xlim([xmin, xmax])
     ylim([0.92, 1.15])
     text(xmin + labx, gca().YLim(1) + laby*(gca().YLim(2) - gca().YLim(1)), '(d)', 'fontsize', fonts.lab)
