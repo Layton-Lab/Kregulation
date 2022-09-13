@@ -35,6 +35,10 @@ Code files for K+ homeostasis regulation model.
 
 **set_params** sets the model parameters
 
+**sensitivity2** conducts local sensitivity analysis
+
+**run_feedback_sims** conducts simulations with feedback/feedforward mechanisms off, plots relevant results using **plot_5_sims**
+
 
 ### Data/
 contains data file from Preston et al. 2015
