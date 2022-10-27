@@ -29,15 +29,16 @@ Code files for K+ homeostasis regulation model described in [Stadt et al. "A mat
 
 **run_simulation** runs 2 simulations based on given specifications, plots relevant results using **plot_simulation**
 
-**run_Kload** run K loading simulations, plot relevant results using **plot_Kload_sim**
+**run_Kload** run K loading simulations, plot relevant results using **plot_Kload_sim**. Run to recreate Fig. 8 from 
+[Stadt et al.](https://www.biorxiv.org/content/10.1101/2022.09.28.509841v1).
 
-**run_Kdeplete** runs K depletion simulations, plot relevant results using **plot_Kdeplete**
+**run_Kdeplete** runs K depletion simulations, plot relevant results using **plot_Kdeplete**. Run to recreate Fig. 9 from [Stadt et al.](https://www.biorxiv.org/content/10.1101/2022.09.28.509841v1). 
 
 **set_params** sets the model parameters
 
-**sensitivity2** conducts local sensitivity analysis
+**sensitivity2** conducts local sensitivity analysis. Run to recreate Fig. 3 from [Stadt et al.](https://www.biorxiv.org/content/10.1101/2022.09.28.509841v1).
 
-**run_feedback_sims** conducts simulations with feedback/feedforward mechanisms off, plots relevant results using **plot_5_sims**
+**run_feedback_sims** conducts simulations with feedback/feedforward mechanisms off, plots relevant results using **plot_5_sims**. Run to recreate Fig. 7 from [Stadt et al.](https://www.biorxiv.org/content/10.1101/2022.09.28.509841v1).
 
 
 ### Data/
