@@ -1,6 +1,6 @@
 # K Regulation
 
-Code files for K+ homeostasis regulation model presented in [Stadt et al. "A mathematical model of potassium homeostasis: Effect of feedforward and feedback controls" (under review)](https://www.biorxiv.org/content/10.1101/2022.09.28.509841v1)
+Code files for K+ homeostasis regulation model described in [Stadt et al. "A mathematical model of potassium homeostasis: Effect of feedforward and feedback controls" (under review)](https://www.biorxiv.org/content/10.1101/2022.09.28.509841v1).
 
 ## Key files
 
