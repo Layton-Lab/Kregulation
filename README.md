@@ -25,7 +25,7 @@ Code files for K+ homeostasis regulation model described in [Stadt et al. "A mat
 
 **get_FF** computes gamma_Kin
 
-**run_Preston_exp** runs the Meal only, KCL only and Meal+KCL only simulations and then plots relevant results using **plot_Preston_exp**
+**run_Preston_exp** runs the Meal only, KCL only and Meal+KCL only simulations and then plots relevant results using **plot_Preston_exp**. This can be used to recreate Fig. 4, 5, and 6 from [Stadt et al.](https://www.biorxiv.org/content/10.1101/2022.09.28.509841v1).
 
 **run_simulation** runs 2 simulations based on given specifications, plots relevant results using **plot_simulation**
 
