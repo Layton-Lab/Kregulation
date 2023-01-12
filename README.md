@@ -36,7 +36,7 @@ Code files for K+ homeostasis regulation model described in [Stadt et al. "A mat
 
 **set_params** sets the model parameters
 
-**sensitivity2** conducts local sensitivity analysis. Run to recreate Fig. 3 from [Stadt et al.](https://www.biorxiv.org/content/10.1101/2022.09.28.509841v1).
+**sensitivity2** conducts local sensitivity analysis. Run to recreate Fig. 3 from [Stadt et al. 2022]((https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010607)).
 
 **run_feedback_sims** conducts simulations with feedback/feedforward mechanisms off, plots relevant results using **plot_5_sims**. Run to recreate Fig. 7 from [Stadt et al. 2022](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010607).
 
