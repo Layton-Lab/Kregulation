@@ -4,14 +4,6 @@ Code files for K+ homeostasis regulation model described in [Stadt et al. "A mat
 
 ## Key files
 
-**checkIC.m** uses MATLAB function decic to check if the initial condition is consistent
-
-**fit_FF.m** fit the FF parameter to the KCL only data, calls **fit_KCL_Preston2015**
-
-**fit_insulin.m** fit insulin_A and insulin_B parameters to the Meal only data, calls **fit_Meal_Preston2015**
-
-**fit_params** fits FF, insulin_A, insulin_B, cdKreab_A, cdKreab_B to Meal, KCL, Meal and KCL data by calling **fit_KCLandMeal_Preston2015**
-
 **run_getSS.m** calls **getSS** which computes the steady state of the given system
 
 **k_reg_mod** model equations
@@ -40,6 +32,13 @@ Code files for K+ homeostasis regulation model described in [Stadt et al. "A mat
 
 **run_feedback_sims** conducts simulations with feedback/feedforward mechanisms off, plots relevant results using **plot_5_sims**. Run to recreate Fig. 7 from [Stadt et al. 2022](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010607).
 
+**checkIC.m** uses MATLAB function decic to check if the initial condition is consistent
+
+**fit_FF.m** fit the FF parameter to the KCL only data, calls **fit_KCL_Preston2015**
+
+**fit_insulin.m** fit insulin_A and insulin_B parameters to the Meal only data, calls **fit_Meal_Preston2015**
+
+**fit_params** fits FF, insulin_A, insulin_B, cdKreab_A, cdKreab_B to Meal, KCL, Meal and KCL data by calling **fit_KCLandMeal_Preston2015**
 
 ### Data/
 contains data file from Preston et al. 2015
